@@ -18,5 +18,5 @@ if __name__ == "__main__":
     else:
         files = colect_files_subdirectory(path, list_option)
         for file in files:
-            if open_file(file, pattern, option) == False:
-                print("")
+            open_file(file, pattern, option)
+

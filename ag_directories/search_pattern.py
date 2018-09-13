@@ -1,4 +1,4 @@
-import re
+from re import findall, IGNORECASE
 
 
 def color(content, option="match"):
@@ -22,6 +22,7 @@ def show_name_file(path):
     '''
     check is show path_file or not
     '''
+    print("")
     print("%s" % color(path, "path"))
     return False
 
@@ -31,7 +32,7 @@ def high_light(pattern, content, option):
     Will find pattern every pattern in content ignore upper or lower
     and highlight that pattern in content
     """
-    patterns = re.findall(pattern, content, re.IGNORECASE)
+    patterns = findall(pattern, content, IGNORECASE) if option != '--case-sensitive' else findall(pattern, content)
     for pattern in set(patterns):
         content = content.replace(pattern, color(pattern))
     return content if len(patterns) > 0 else None
